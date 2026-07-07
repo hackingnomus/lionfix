@@ -1,0 +1,70 @@
+{
+  "name": "lionfix",
+  "version": "5.0.0",
+  "description": "Sistema de gestión de inventario para talleres técnicos - CLI con TUI interactiva",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "lionfix": "./bin/lionfix.js"
+  },
+  "files": [
+    "dist",
+    "bin",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "keywords": [
+    "inventario",
+    "taller",
+    "tecnico",
+    "tui",
+    "cli",
+    "react",
+    "ink",
+    "terminal"
+  ],
+  "author": {
+    "name": "LionFix",
+    "email": "",
+    "url": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TU_USUARIO/lionfix.git"
+  },
+  "bugs": {
+    "url": "https://github.com/TU_USUARIO/lionfix/issues"
+  },
+  "homepage": "https://github.com/TU_USUARIO/lionfix#readme",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -rf dist",
+    "prebuild": "npm run clean",
+    "start": "node bin/lionfix.js",
+    "dev": "tsx src/index.ts",
+    "postinstall": "node -e \"if(process.platform!=='win32'){require('child_process').execSync('find node_modules/.bin node_modules/@esbuild -type f -exec chmod +x {} + 2>/dev/null || true',{stdio:'inherit'})}\"",
+    "prepublishOnly": "npm run clean && npm run build",
+    "version": "git add -A",
+    "postversion": "git push && git push --tags"
+  },
+  "dependencies": {
+    "ink": "^7.1.0",
+    "react": "^19.2.0",
+    "commander": "^12.0.0",
+    "exceljs": "^4.4.0",
+    "pdfkit": "^0.15.0",
+    "archiver": "^7.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.0",
+    "tsx": "^4.16.0",
+    "@types/react": "^19.0.0",
+    "@types/archiver": "^6.0.0",
+    "@types/pdfkit": "^0.13.8"
+  }
+}
