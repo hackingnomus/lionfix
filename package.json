@@ -32,12 +32,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TU_USUARIO/lionfix.git"
+    "url": "git+https://github.com/hackingnomus/lionfix.git"
   },
   "bugs": {
-    "url": "https://github.com/TU_USUARIO/lionfix/issues"
+    "url": "https://github.com/hackingnomus/lionfix/issues"
   },
-  "homepage": "https://github.com/TU_USUARIO/lionfix#readme",
+  "homepage": "https://github.com/hackingnomus/lionfix#readme",
   "publishConfig": {
     "access": "public"
   },
