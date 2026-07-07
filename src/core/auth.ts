@@ -129,7 +129,7 @@ export function getLoginAttempts(inventarioRaiz: string, username: string): numb
   try {
     const raw = readFileSync(file, 'utf-8').trim();
     const lines = raw.split('\n').filter(Boolean);
-    // Count attempts within last 5 minutes
+    
     const now = Date.now();
     const recent = lines.filter(ts => now - parseInt(ts, 10) < 300000);
     writeFileSync(file, recent.join('\n') + '\n', 'utf-8');

@@ -79,9 +79,7 @@ export function resolveCollision(destDir: string, fileName: string): string {
   return newName;
 }
 
-/**
- * Calcula el hash SHA-256 usando streams para no cargar archivos grandes en RAM.
- */
+
 export async function calculateFileHash(filePath: string): Promise<string> {
   return new Promise((resolve, reject) => {
     const hash = createHash('sha256');
@@ -92,11 +90,7 @@ export async function calculateFileHash(filePath: string): Promise<string> {
   });
 }
 
-/**
- * Busca archivos duplicados en el inventario usando la caché de hashes.
- * Primero consulta .hashes.sha256 (O(1)), y solo si no encuentra
- * coincidencia cae a walk + hash (O(n)).
- */
+
 export async function findInventoryDuplicates(
   inventarioRaiz: string,
   sourceHash: string,
@@ -104,7 +98,7 @@ export async function findInventoryDuplicates(
 ): Promise<string[]> {
   const duplicates: string[] = [];
 
-  // Fast path: consultar caché .hashes.sha256
+  
   const hashDbPath = join(inventarioRaiz, '.hashes.sha256');
   if (existsSync(hashDbPath)) {
     try {
@@ -123,10 +117,10 @@ export async function findInventoryDuplicates(
         }
       }
       if (duplicates.length > 0) return duplicates;
-    } catch { /* fall through to slow path */ }
+    } catch {  }
   }
 
-  // Slow path: walk + hash (solo si no hay caché o no hubo match)
+  
   async function walk(dir: string) {
     let entries: string[];
     try { entries = readdirSync(dir); } catch { return; }
@@ -150,7 +144,7 @@ export async function findInventoryDuplicates(
             duplicates.push(fullPath);
           }
         }
-      } catch { /* ignore unreadable files */ }
+      } catch {  }
     }
   }
 
@@ -158,9 +152,7 @@ export async function findInventoryDuplicates(
   return duplicates;
 }
 
-/**
- * Registra la adición de un archivo al inventario en el log de cambios.
- */
+
 export function registrarAdicionInventario(
   inventarioRaiz: string,
   destPath: string,
@@ -169,7 +161,7 @@ export function registrarAdicionInventario(
 ): void {
   try {
     registrarAdicion(inventarioRaiz, destPath, hash, tecnico);
-  } catch { /* no bloquear si falla el log */ }
+  } catch {  }
 }
 
 export function getPendingFiles(porClasificarDir: string): string[] {

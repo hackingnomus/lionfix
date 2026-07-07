@@ -23,7 +23,7 @@ export function Login({ config, onLogin, onSetup }: LoginProps) {
     if (key.escape) { process.exit(0); return; }
     if (blocked) return;
 
-    // No hay usuarios — Enter va a configuración
+    
     if (users.length === 0) {
       if (key.return || key.tab) {
         onSetup();
@@ -137,7 +137,7 @@ export function Login({ config, onLogin, onSetup }: LoginProps) {
         <Newline />
         
         <Box flexDirection="row" width={60} justifyContent="space-between">
-          {/* Panel Izquierdo: Lista de Usuarios */}
+          {}
           {users.length > 0 && (
             <Box flexDirection="column" width="45%" borderStyle="single" borderColor="gray" paddingX={2} paddingY={1}>
               <Text dimColor>■ USUARIOS AUTORIZADOS</Text>
@@ -149,7 +149,7 @@ export function Login({ config, onLogin, onSetup }: LoginProps) {
             </Box>
           )}
 
-          {/* Panel Derecho: Autenticación */}
+          {}
           <Box flexDirection="column" width="50%" borderStyle="single" borderColor="blue" paddingX={2} paddingY={1}>
             {step === 'select_user' && (
               <Box flexDirection="column">

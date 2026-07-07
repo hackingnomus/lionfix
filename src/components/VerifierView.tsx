@@ -77,7 +77,7 @@ export function VerifierView({ config, onBack }: Props) {
       logActivity(root, config.TECNICO, 'mover_papelera', `${corruptFiles.length} archivos corruptos`, '*', 'CORRUPTO_HASH');
       writeFileSync(hashDbPath, serializeHashDB(cache), 'utf-8');
     }
-    // 's' and 'i' keep the corrupt entries in the hash DB (already saved)
+    
     setCorruptAction('done');
   }, [config, corruptFiles]);
 

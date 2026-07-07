@@ -21,7 +21,7 @@ function walkFiles(dir: string, maxDepth = 5): string[] {
         } else if (RELEVANT_EXTS.test(entry)) {
           results.push(full);
         }
-      } catch { /* skip unreadable */ }
+      } catch {  }
     }
   }
   inner(dir, 0);

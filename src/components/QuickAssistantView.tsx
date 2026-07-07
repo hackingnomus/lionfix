@@ -23,7 +23,7 @@ export function QuickAssistantView({ config, onBack }: Props) {
     const root = config.INVENTARIO_RAIZ;
     const lines: string[] = [];
 
-    // 1. Organize
+    
     const porClasificar = join(root, 'por_clasificar');
     if (existsSync(porClasificar)) {
       const files = getPendingFiles(porClasificar);
@@ -60,7 +60,7 @@ export function QuickAssistantView({ config, onBack }: Props) {
       }
     }
 
-    // 2. Verify
+    
     lines.push('Verificando integridad SHA-256...');
     const hashDbPath = join(root, '.hashes.sha256');
     const prevHashDb = existsSync(hashDbPath) ? readFileSync(hashDbPath, 'utf-8') : '';
@@ -85,7 +85,7 @@ export function QuickAssistantView({ config, onBack }: Props) {
     writeFileSync(hashDbPath, serializeHashDB(newCache), 'utf-8');
     lines.push(`  ✓ OK:${ok}  CORRUPTO:${corrupto}  NUEVO:${nuevo}`);
 
-    // 3. Export report
+    
     lines.push('Generando informe...');
     const entries = parseLog(readLog(root));
     const reportPath = join(root, `informe_rapido_${Date.now()}.xlsx`);

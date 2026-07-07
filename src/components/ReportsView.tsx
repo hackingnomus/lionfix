@@ -11,7 +11,7 @@ export function ReportsView({ config, onBack }: Props) {
   const [generating, setGenerating] = useState(false);
   const [message, setMessage] = useState('');
   
-  // States for manual log
+  
   const [manualMode, setManualMode] = useState(false);
   const [logStep, setLogStep] = useState<'operacion' | 'archivo'>('operacion');
   const [operacion, setOperacion] = useState('');

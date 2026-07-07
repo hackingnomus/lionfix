@@ -39,7 +39,7 @@ export function formatError(err: unknown): string {
 
 function syncSleep(ms: number): void {
   const start = Date.now();
-  while (Date.now() - start < ms) { /* spin */ }
+  while (Date.now() - start < ms) {  }
 }
 
 const EBUSY_DELAYS = [100, 200, 400, 800, 1600];
@@ -52,7 +52,7 @@ function tryWriteFallback(path: string, data: string | Buffer, encoding?: Buffer
   try {
     const fallback = path + '.pending';
     writeFileSync(fallback, data, { encoding: encoding ?? 'utf-8' });
-  } catch { /* ignore fallback failures */ }
+  } catch {  }
 }
 
 export function reconcilePendingFiles(inventarioRaiz: string): void {
@@ -65,7 +65,7 @@ export function reconcilePendingFiles(inventarioRaiz: string): void {
       appendFileSync(originalPath, content, 'utf-8');
       renameSync(pendingPath, pendingPath + '.reconciled');
     }
-  } catch { /* best effort */ }
+  } catch {  }
 }
 
 export function writeFileWithRetry(
@@ -106,7 +106,7 @@ export function appendFileWithRetry(
         continue;
       }
       if (isEBUSY(err)) {
-        // file locked by another process (e.g. Excel) — write to .pending fallback
+        
         const existing = tryOrDefault(() => readFileSync(path, 'utf-8'), '');
         tryWriteFallback(path, existing + data, encoding);
         return;

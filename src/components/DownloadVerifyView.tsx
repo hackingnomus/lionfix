@@ -19,11 +19,11 @@ export function DownloadVerifyView({ config, onBack }: Props) {
     if (input === 'b' && !filePath) { setFilePath(''); setResult(null); return; }
     if (input.length === 1 && !key.return && !key.escape) {
       setFilePath(prev => prev + input);
-      setResult(null); // Clear result when typing
+      setResult(null); 
     }
     if (key.backspace || key.delete) {
       setFilePath(prev => prev.slice(0, -1));
-      setResult(null); // Clear result when deleting
+      setResult(null); 
     }
   });
 

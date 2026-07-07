@@ -6,7 +6,7 @@ import { readLog, readUserLog, parseLog, LogEntry } from '../core/logger.js';
 interface Props {
   config: Config;
   onBack: () => void;
-  username?: string; // Si se provee, muestra historial de usuario; si no, global.
+  username?: string; 
 }
 
 const PAGE_SIZE = 15;
@@ -20,7 +20,7 @@ export function LogView({ config, onBack, username }: Props) {
   useEffect(() => {
     const raw = username ? readUserLog(config.INVENTARIO_RAIZ, username) : readLog(config.INVENTARIO_RAIZ);
     const parsed = parseLog(raw);
-    setEntries(parsed.reverse()); // Más recientes primero
+    setEntries(parsed.reverse()); 
   }, [config.INVENTARIO_RAIZ, username]);
 
   const filtered = useMemo(() => {

@@ -195,7 +195,7 @@ export function WSLView({ config, onBack }: Props) {
     }
   });
 
-  // ─── LOADING ─────────────────────────────────────────
+  
   if (loading) return <Text>Buscando distribuciones WSL2...</Text>;
   if (!isWSLAvailable()) return (
     <Box flexDirection="column" paddingX={2} paddingY={1}>
@@ -265,7 +265,7 @@ export function WSLView({ config, onBack }: Props) {
     </Box>
   );
 
-  // ─── NETWORK ─────────────────────────────────────────
+  
   if (step === 'network') return (
     <Box flexDirection="column" paddingX={2} paddingY={1}>
       <Text bold color="yellow">Diagnostico de red en {selectedDistro}</Text>

@@ -15,7 +15,7 @@ export interface DiagnosticResult {
 export function runDiagnostics(inventarioRaiz: string): DiagnosticResult[] {
   const results: DiagnosticResult[] = [];
 
-  // 1. Config file exists
+  
   const cfgPath = join(inventarioRaiz, '..', 'config.cfg');
   if (existsSync(cfgPath)) {
     results.push({ check: 'config.cfg', status: 'ok', message: 'Archivo de configuración existe' });
@@ -23,7 +23,7 @@ export function runDiagnostics(inventarioRaiz: string): DiagnosticResult[] {
     results.push({ check: 'config.cfg', status: 'warn', message: 'No encontrado, usando valores por defecto' });
   }
 
-  // 2. INVENTARIO_RAIZ exists
+  
   if (existsSync(inventarioRaiz)) {
     results.push({ check: 'INVENTARIO_RAIZ', status: 'ok', message: `Directorio raíz: ${inventarioRaiz}` });
   } else {
@@ -31,7 +31,7 @@ export function runDiagnostics(inventarioRaiz: string): DiagnosticResult[] {
     return results;
   }
 
-  // 3. Critical subdirs
+  
   const criticalDirs = ['por_clasificar', 'backups', 'usuarios'];
   for (const dir of criticalDirs) {
     const full = join(inventarioRaiz, dir);
@@ -42,7 +42,7 @@ export function runDiagnostics(inventarioRaiz: string): DiagnosticResult[] {
     }
   }
 
-  // 4. Secure permissions on critical files
+  
   const criticalFiles = ['.hashes.sha256', 'actividades.csv', '.usuarios.db'];
   for (const file of criticalFiles) {
     const full = join(inventarioRaiz, file);
@@ -51,7 +51,7 @@ export function runDiagnostics(inventarioRaiz: string): DiagnosticResult[] {
     }
   }
 
-  // 5. Check available disk space
+  
   try {
     if (process.platform === 'win32') {
       const root = inventarioRaiz.split(':')[0] || 'C';

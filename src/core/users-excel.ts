@@ -79,13 +79,13 @@ export async function importUsersFromExcel(
       }
     }
 
-    // Guardar ruta del Excel en config.cfg
+    
     if (imported > 0) {
       try {
         const { saveConfig } = await import('../config/index.js');
         saveConfig('EXCEL_USERS_PATH', excelPath);
 
-        // Si se solicita, auto-asignar el primer usuario importado como TECNICO
+        
         if (setTecnico && importedUsers.length > 0) {
           saveConfig('TECNICO', importedUsers[0]);
         }

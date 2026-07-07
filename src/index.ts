@@ -156,7 +156,7 @@ program
       mkdirSync(destDir, { recursive: true });
       let dest = join(destDir, f);
       try {
-        // Duplicate detection by SHA-256
+        
         const srcHash = await calculateFileHash(src);
         const existingDuplicates = await findInventoryDuplicates(root, srcHash, f);
         if (existingDuplicates.length > 0) {
@@ -371,7 +371,7 @@ program
     const f = flujo || 'organize-verify';
 
     if (f === 'organize-verify') {
-      // Organize
+      
       const porClasificar = join(root, 'por_clasificar');
       if (existsSync(porClasificar)) {
         const files = getPendingFiles(porClasificar);
@@ -405,7 +405,7 @@ program
         } else console.log('  Sin archivos pendientes');
       }
 
-      // Verify
+      
       console.log('🔍 Verificando integridad...');
       const hashDbPath = join(root, '.hashes.sha256');
       const prevHashDb = existsSync(hashDbPath) ? readFileSync(hashDbPath, 'utf-8') : '';
@@ -427,7 +427,7 @@ program
       writeFileSync(hashDbPath, serializeHashDB(newCache), 'utf-8');
       console.log(`  ✓ OK:${ok}  CORRUPTO:${corrupto}  NUEVO:${nuevo}`);
 
-      // Export
+      
       console.log('📄 Generando informe Excel...');
       const entries = parseLog(readLog(root));
       const reportPath = join(root, `informe_rapido_${Date.now()}.xlsx`);
@@ -845,7 +845,7 @@ try {
 } catch (e: unknown) {
   const err = e as { code?: string; message?: string };
   if (err.code === 'commander.helpDisplayed' || err.code === 'commander.versionDisplayed') {
-    // normal exit for --help / --version
+    
   } else {
     console.error(err.message || String(e));
     process.exit(1);

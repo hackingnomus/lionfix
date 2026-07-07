@@ -404,19 +404,19 @@ function convertWindowsToWSLPath(winPath: string): string {
 }
 
 export function ensureWSLPath(distro: string, wslPath: string): boolean {
-  // Method 1: mkdir via WSL (creates on Windows through /mnt/ mount)
+  
   try {
     executeWSL(distro, `mkdir -p "${wslPath}"`, 30000);
     if (checkWSLPathExists(distro, wslPath)) return true;
   } catch {}
 
-  // Method 2: sudo mkdir via WSL (permission fallback)
+  
   try {
     executeWSL(distro, `sudo mkdir -p "${wslPath}" 2>/dev/null; test -d "${wslPath}"`, 30000);
     if (checkWSLPathExists(distro, wslPath)) return true;
   } catch {}
 
-  // Method 3: Create from Windows side (for /mnt/ paths -> real Windows dir)
+  
   const winPath = wslPathToWindows(wslPath);
   if (winPath) {
     try {
@@ -425,7 +425,7 @@ export function ensureWSLPath(distro: string, wslPath: string): boolean {
     } catch {}
   }
 
-  // Method 4: cmd.exe mkdir as last resort
+  
   if (winPath) {
     try {
       execSync(`if not exist "${winPath}" mkdir "${winPath}"`, { shell: 'cmd.exe', timeout: 10000 });
@@ -487,7 +487,7 @@ export function autoRepairDistro(distro: string, inventarioRaiz: string, wslPath
   lines.push(`Auto-reparacion de ${distro}...`);
   lines.push('');
 
-  // ─── Step 0: Verify distro can execute commands ──────────────────────
+  
   lines.push('[0/4] Verificando que la distribucion pueda ejecutar comandos...');
   const verification = verifyWSLDistro(distro);
   report.verification = verification;
@@ -516,7 +516,7 @@ export function autoRepairDistro(distro: string, inventarioRaiz: string, wslPath
   lines.push('  OK - Comandos basicos funcionan correctamente');
   lines.push('');
 
-  // ─── Step 1: Start distro if stopped ────────────────────────────────
+  
   lines.push('[1/4] Verificando estado de la distribucion...');
   try {
     const distros = getWSLDistros();
@@ -543,7 +543,7 @@ export function autoRepairDistro(distro: string, inventarioRaiz: string, wslPath
   }
   lines.push('');
 
-  // ─── Step 2: Detect package manager ─────────────────────────────────
+  
   lines.push('[2/4] Detectando gestor de paquetes...');
   const pm = detectWSLPackageManager(distro, true);
   report.pmDetected = pm;
@@ -560,7 +560,7 @@ export function autoRepairDistro(distro: string, inventarioRaiz: string, wslPath
   }
   lines.push('');
 
-  // ─── Step 3: Install missing critical tools ──────────────────────────
+  
   lines.push('[3/4] Verificando herramientas criticas...');
   const missing = getMissingCriticalTools(distro, wslPath);
   const missingTools = missing.filter(m => !m.startsWith('inventario_path:'));
@@ -612,7 +612,7 @@ export function autoRepairDistro(distro: string, inventarioRaiz: string, wslPath
   }
   lines.push('');
 
-  // ─── Step 4: Create inventory path ──────────────────────────────────
+  
   lines.push('[4/4] Verificando ruta de inventario...');
   const pathMissing = missing.some(m => m.startsWith('inventario_path:'));
   if (pathMissing) {
@@ -644,7 +644,7 @@ export function autoRepairDistro(distro: string, inventarioRaiz: string, wslPath
   }
   lines.push('');
 
-  // ─── Final ──────────────────────────────────────────────────────────
+  
   report.success = report.errors.length === 0;
   if (report.success) {
     lines.push('Reparacion completada sin errores.');

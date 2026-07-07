@@ -82,7 +82,7 @@ function missingToolsMessage(missing: string[], distro: string): WSLInventoryRes
   };
 }
 
-// ─── FILE STATES ──────────────────────────────────────────
+
 
 export function wslFileStates(distro: string, inventarioRaiz: string): WSLInventoryResult {
   const wslPath = getWSLInventoryPath(inventarioRaiz);
@@ -121,7 +121,7 @@ export function wslFileStates(distro: string, inventarioRaiz: string): WSLInvent
   }
 }
 
-// ─── READY ISOs ───────────────────────────────────────────
+
 
 export function wslReadyISOs(distro: string, inventarioRaiz: string): WSLInventoryResult {
   const wslPath = getWSLInventoryPath(inventarioRaiz);
@@ -159,7 +159,7 @@ export function wslReadyISOs(distro: string, inventarioRaiz: string): WSLInvento
   }
 }
 
-// ─── DIAGNOSTIC TOOLS ─────────────────────────────────────
+
 
 export function wslDiagnosticTools(distro: string, inventarioRaiz: string): WSLInventoryResult {
   const wslPath = getWSLInventoryPath(inventarioRaiz);
@@ -197,7 +197,7 @@ export function wslDiagnosticTools(distro: string, inventarioRaiz: string): WSLI
   }
 }
 
-// ─── DRIVERS BY DEVICE ────────────────────────────────────
+
 
 export function wslDriversByDevice(distro: string, inventarioRaiz: string): WSLInventoryResult {
   const wslPath = getWSLInventoryPath(inventarioRaiz);
@@ -241,7 +241,7 @@ export function wslDriversByDevice(distro: string, inventarioRaiz: string): WSLI
   }
 }
 
-// ─── INTEGRITY CHECK ──────────────────────────────────────
+
 
 export function wslIntegrityCheck(distro: string, inventarioRaiz: string): WSLInventoryResult {
   const wslPath = getWSLInventoryPath(inventarioRaiz);
@@ -279,7 +279,7 @@ export function wslIntegrityCheck(distro: string, inventarioRaiz: string): WSLIn
   }
 }
 
-// ─── CATEGORY STATES ──────────────────────────────────────
+
 
 export function wslCategoryStates(distro: string, inventarioRaiz: string): WSLInventoryResult {
   const wslPath = getWSLInventoryPath(inventarioRaiz);
@@ -326,7 +326,7 @@ export function wslCategoryStates(distro: string, inventarioRaiz: string): WSLIn
   }
 }
 
-// ─── TECH QUICK SUMMARY ───────────────────────────────────
+
 
 export function wslTechQuickSummary(distro: string, inventarioRaiz: string): WSLInventoryResult {
   const wslPath = getWSLInventoryPath(inventarioRaiz);
@@ -375,7 +375,7 @@ export function wslTechQuickSummary(distro: string, inventarioRaiz: string): WSL
   }
 }
 
-// ─── CLEANUP TEMP ─────────────────────────────────────────
+
 
 export function wslCleanupTemp(distro: string, inventarioRaiz: string): WSLInventoryResult {
   const wslPath = getWSLInventoryPath(inventarioRaiz);
@@ -390,7 +390,7 @@ export function wslCleanupTemp(distro: string, inventarioRaiz: string): WSLInven
   }
 }
 
-// ─── FIND DUPLICATES ──────────────────────────────────────
+
 
 export function wslFindDuplicates(distro: string, inventarioRaiz: string): WSLInventoryResult {
   const wslPath = getWSLInventoryPath(inventarioRaiz);
@@ -409,7 +409,7 @@ export function wslFindDuplicates(distro: string, inventarioRaiz: string): WSLIn
   }
 }
 
-// ─── INVENTORY TREE ───────────────────────────────────────
+
 
 export function wslInventoryTree(distro: string, inventarioRaiz: string): WSLInventoryResult {
   const wslPath = getWSLInventoryPath(inventarioRaiz);
@@ -424,7 +424,7 @@ export function wslInventoryTree(distro: string, inventarioRaiz: string): WSLInv
   }
 }
 
-// ─── INSTALL TOOLS ────────────────────────────────────────
+
 
 export function wslInstallInventoryTools(distro: string, pm: string | null | undefined = undefined): WSLInventoryResult {
   try {
@@ -478,7 +478,7 @@ export function wslInstallInventoryTools(distro: string, pm: string | null | und
   }
 }
 
-// ─── SYMLINK ──────────────────────────────────────────────
+
 
 export function wslSymlinkInventory(distro: string, inventarioRaiz: string, linkPath?: string): WSLInventoryResult {
   const wslPath = getWSLInventoryPath(inventarioRaiz);
@@ -492,7 +492,7 @@ export function wslSymlinkInventory(distro: string, inventarioRaiz: string, link
   }
 }
 
-// ─── GENERIC COMMAND ──────────────────────────────────────
+
 
 export function wslInventoryCommand(distro: string, inventarioRaiz: string, command: string): string {
   const wslPath = getWSLInventoryPath(inventarioRaiz);

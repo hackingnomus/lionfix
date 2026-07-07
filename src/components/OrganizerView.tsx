@@ -35,7 +35,7 @@ export function OrganizerView({ config, onBack }: Props) {
       mkdirSync(destDir, { recursive: true });
       let dest = join(destDir, f.name);
       try {
-        // Duplicate detection
+        
         const srcHash = await calculateFileHash(src);
         const existingDuplicates = await findInventoryDuplicates(config.INVENTARIO_RAIZ, srcHash, f.name);
         if (existingDuplicates.length > 0) {
