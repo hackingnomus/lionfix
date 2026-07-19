@@ -2,6 +2,8 @@
 
 Sistema de gestión de inventario para talleres técnicos.
 Terminal UI (React + Ink) con CLI.
+<img width="640" height="640" alt="log" src="https://github.com/user-attachments/assets/2f5d5343-1883-42b8-8d92-29d763fd503c" />
+
 
 ## Stack
 
